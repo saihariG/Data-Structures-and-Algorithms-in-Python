@@ -50,4 +50,26 @@ class SinglyLinkedList:
 
         print(f"Length of linked list: {n}")
 
+    # Algorithm for searching a node
+    #   1. If head is null, then there list is empty
+    #   2. create a current node and initialize to head
+    #   2. initialize a counter variable to zero
+    #   3. traverse until current is not null
+    #   4. if data found return else traverse to next element and increase the counter
+    #   5. If the list is completely traversed, print Key not found
+    def search_node(self, key):
+        if self.head is None:
+            print("Search key not found")
 
+        current = self.head
+        count = 0
+
+        while current is not None:
+            if current.data == key:
+                print(f"Found key: {key} at index: {count}")
+                return
+
+            current = current.next
+            count += 1
+
+        print("Key not found")
