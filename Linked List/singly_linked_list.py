@@ -1,3 +1,6 @@
+from http.cookiejar import cut_port_re
+
+
 class ListNode:
     def __init__(self, data):
         self.data = data
@@ -125,3 +128,23 @@ class SinglyLinkedList:
 
         # Key found
         temp.next = current_node.next
+
+
+    # Algorithm to reverse a linked list
+    # 1. create nodes current and prev while current points to head
+    # 2. Temporarily store the next_node (head's next)
+    # 3. Reverse the link
+    # 4. Move previous and current one step ahead
+    # 5. Update the head to the new first node which is previous
+    def reverse_list(self):
+        current = self.head
+        previous = None
+
+        while current is not None:
+            next_node = current.next
+            current.next = previous
+            previous = current
+            current = next_node
+
+        self.head = previous
+
