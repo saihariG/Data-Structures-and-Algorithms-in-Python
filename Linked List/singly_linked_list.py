@@ -148,3 +148,20 @@ class SinglyLinkedList:
 
         self.head = previous
 
+    # Algorithm to detect a loop
+    # 1. Create two nodes slow and fast pointing to head
+    # 2. Traverse slow and fast, while fast is one step ahead the slow node
+    # 3. if Slow equals fast, then there is a loop
+    # 4. There is no loop after entire traversal, so return false
+    def detect_loop(self):
+        slow = self.head
+        fast = self.head
+
+        while slow.next is not None and fast.next.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+
+            if slow == fast:
+                return True
+
+        return False
