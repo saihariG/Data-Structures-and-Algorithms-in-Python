@@ -99,3 +99,29 @@ class SinglyLinkedList:
 
         if slow is not None:
             print(f"Middle node: {slow.data} --> ")
+
+
+    # Algorithm to delete a given node
+    # 1. Create two nodes current and temp, while current pointing to head
+    # 2. if current_node's data equals Key, then move the head to current's next (deleting)
+    # 3. Traverse the list until the key is not found, while tracking the temp with current
+    # 4. If current is null, we are at the end of the list (Key not found), So return
+    # 5. When the Key is found, make temp's next point to current's next
+    def delete_node(self, key):
+        current_node = self.head
+        temp = None
+
+        if current_node.data == key:
+            self.head = current_node.next
+            return
+
+        while current_node is not None and current_node.data is not key:
+            temp = current_node
+            current_node = current_node.next
+
+        # Traversed the entire list
+        if current_node is None:
+            return
+
+        # Key found
+        temp.next = current_node.next
