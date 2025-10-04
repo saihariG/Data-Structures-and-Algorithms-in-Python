@@ -73,3 +73,29 @@ class SinglyLinkedList:
             count += 1
 
         print("Key not found")
+
+
+    # Algorithm for displaying the list
+    def print_linked_list(self):
+        current = self.head
+
+        while current is not None:
+            print(f"{current.data} --> ")
+            current = current.next
+
+        print("None")
+
+    # Algorithm to find the middle node
+    # 1. create nodes Slow and Fast and point them to head
+    # 2. Traverse slow and fast until fast and its next is not null
+    # 3. After traversing, print slow's data if not null
+    def find_middle_node(self):
+        slow = self.head
+        fast = self.head
+
+        while fast is not None and fast.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+
+        if slow is not None:
+            print(f"Middle node: {slow.data} --> ")
