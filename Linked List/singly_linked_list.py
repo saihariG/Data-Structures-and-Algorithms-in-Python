@@ -1,6 +1,3 @@
-from http.cookiejar import cut_port_re
-
-
 class ListNode:
     def __init__(self, data):
         self.data = data
@@ -91,7 +88,7 @@ class SinglyLinkedList:
     # Algorithm to find the middle node
     # 1. create nodes Slow and Fast and point them to head
     # 2. Traverse slow and fast until fast and its next is not null
-    # 3. After traversing, print slow's data if not null
+    # 3. After traversing, print slow 's data if not null
     def find_middle_node(self):
         slow = self.head
         fast = self.head
