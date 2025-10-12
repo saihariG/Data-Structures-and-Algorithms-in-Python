@@ -19,3 +19,21 @@ class DoublyLinkedList:
 
         # if list is empty
         self.head = new_node
+
+    # Algo to insert node at end
+    def insert_node_at_end(self, data):
+        new_node = ListNode(data)
+
+        # if the list is empty
+        if self.head is None:
+            self.head = new_node
+            return
+
+        current = self.head
+
+        while current.next:
+            current = current.next
+
+        # we reached the end of the list
+        current.next = new_node
+        new_node.prev = current
