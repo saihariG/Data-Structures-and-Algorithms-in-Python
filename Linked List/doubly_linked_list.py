@@ -40,7 +40,7 @@ class DoublyLinkedList:
         self.tail = new_node
 
     # Algo to delete node at first
-    def delete_node_at_first(self, data):
+    def delete_node_at_first(self):
 
         if self.head == self.tail:
             self.head = None
@@ -54,4 +54,15 @@ class DoublyLinkedList:
         current.next = None
 
     # Algo to delete node at end:
-    def delete_node_at_end(self, data):
+    def delete_node_at_end(self):
+
+        if self.head == self.tail:
+            self.head = None
+            self.tail = None
+            return
+
+        current = self.tail
+
+        current.prev.next = None
+        self.tail = current.prev
+        current.prev = None
