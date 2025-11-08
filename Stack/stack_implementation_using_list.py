@@ -16,8 +16,8 @@ class Stack:
 
     def push(self, data):
         new_node = ListNode(data)
-        new_node.next = self.top # linking
-        self.top = new_node
+        new_node.next = self.top # New node points to the old top
+        self.top = new_node # Move top to new node
         self.size += 1
 
     def pop(self):
@@ -26,7 +26,7 @@ class Stack:
 
         popped = self.top.data
 
-        self.top = self.top.next
+        self.top = self.top.next # Move top down one node
         self.size -= 1
 
         return popped
@@ -37,12 +37,22 @@ class Stack:
 
         return self.top.data
 
+    # Display all elements
+    def display(self):
+        current = self.top
+        print("Stack (top -> bottom): ", end="")
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
 if __name__ == "__main__":
     s = Stack()
 
     s.push(10)
     s.push(20)
     s.push(30)
+    s.display()
     print("Top element:", s.peek())
     print(s.pop())
     print(s.pop())
