@@ -66,7 +66,12 @@ class BinaryTree:
         pass
 
     def recursive_postorder_traversal(self, root):
-        pass
+        if root is None:
+            return
+        
+        self.recursive_postorder_traversal(root.left)
+        self.recursive_postorder_traversal(root.right)
+        print(root.data)
 
     def iterative_postorder_traversal(self, root):
         pass 
@@ -82,5 +87,7 @@ if __name__ == '__main__':
 
     root1 = create_binary_tree()
     root2 = create_binary_tree_2()
-
+ 
     bt.recursive_inorder_traversal(root1)
+    bt.recursive_preorder_traversal(root1)
+    bt.recursive_postorder_traversal(root1)
