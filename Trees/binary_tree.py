@@ -114,8 +114,28 @@ class BinaryTree:
         self.recursive_postorder_traversal(root.right)
         print(root.data)
 
+    # Idea: Root is processed last, Left -> Right -> Root
+    # 1. First stack -> simulate preorder
+    # 2. Second stack -> reverse the order to get Left -> Right -> Root
     def iterative_postorder_traversal(self, root):
-        pass 
+        if root is None:
+            return
+        
+        stack1 = [root]
+        stack2 = []
+        
+        while stack1:
+            temp_node = stack1.pop()
+            stack2.append(temp_node)
+
+            if temp_node.left:
+                temp_node = temp_node.left
+
+            if temp_node.right:
+                temp_node = temp_node.right
+            
+        while stack2:
+            print(stack2.pop().data)
 
     def level_order_traversal(self, root):
         pass 
@@ -135,3 +155,4 @@ if __name__ == '__main__':
 
     bt.iterative_inorder_traversal(root2)
     bt.iterative_preorder_traversal(root2)
+    bt.iterative_postorder_traversal(root2)
