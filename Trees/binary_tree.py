@@ -51,8 +51,29 @@ class BinaryTree:
         print(root.data)
         self.recursive_inorder_traversal(root.right)
 
+    # Left -> Root -> Right, So go as left as possible
+    # Push nodes into the stack
+    # When we can't go left:
+        #  pop from the stack
+        #  Process the node
+        #  Move to the right subtree
     def iterative_inorder_traversal(self, root):
-        pass 
+        if root == None:
+            return
+
+        stack = []
+        current = root
+
+        while stack or current:
+            if current:
+                stack.push(current)
+                current = current.left
+            else:
+                current = stack.pop()
+                print(current.data + " ")
+                # visit the right subtree
+                current = current.right
+
 
     def recursive_preorder_traversal(self, root):
         if root is None:
@@ -111,3 +132,6 @@ if __name__ == '__main__':
     bt.recursive_inorder_traversal(root1)
     bt.recursive_preorder_traversal(root1)
     bt.recursive_postorder_traversal(root1)
+
+    bt.iterative_inorder_traversal(root2)
+    bt.iterative_preorder_traversal(root2)
