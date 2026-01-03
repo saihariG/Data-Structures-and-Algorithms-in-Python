@@ -18,6 +18,8 @@ def create_binary_tree():
     second.left = fourth
     second.right = fifth
 
+    return root
+
 
 def create_binary_tree_2():
     first = Node(1)
@@ -38,7 +40,9 @@ def create_binary_tree_2():
     third.left = sixth
     third.right = seven
 
-class binaryTree:
+    return root
+
+class BinaryTree:
     def recursive_inorder_traversal(self, root):
         pass
 
@@ -64,6 +68,7 @@ class binaryTree:
         pass
 
 if __name__ == '__main__':
-    bt = binaryTree() 
+    bt = BinaryTree() 
 
-    create_binary_tree()
+    root1 = create_binary_tree()
+    root2 = create_binary_tree_2()
