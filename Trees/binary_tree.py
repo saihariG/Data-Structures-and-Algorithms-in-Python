@@ -62,8 +62,28 @@ class BinaryTree:
         self.recursive_preorder_traversal(root.left)
         self.recursive_preorder_traversal(root.right)
 
+    # If root is None, return
+    # Define a stack and push the root node
+    # while stack is not empty,
+        # pop and print the node's data
+        # push the node's right, so left is processed first
+        # push the node's left next
     def iterative_preorder_traversal(self, root):
-        pass
+        if root is None:
+            return
+        
+        stack = [root]
+
+        while stack:
+            temp_node = stack.pop()
+            print(temp_node.data + " ")
+
+            if temp_node.right:
+                stack.append(temp_node.right)
+            
+            if temp_node.left:
+                stack.append(temp_node.left)
+
 
     def recursive_postorder_traversal(self, root):
         if root is None:
