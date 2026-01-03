@@ -55,7 +55,12 @@ class BinaryTree:
         pass 
 
     def recursive_preorder_traversal(self, root):
-        pass
+        if root is None:
+            return
+        
+        print(root.data)
+        self.recursive_preorder_traversal(root.left)
+        self.recursive_preorder_traversal(root.right)
 
     def iterative_preorder_traversal(self, root):
         pass
