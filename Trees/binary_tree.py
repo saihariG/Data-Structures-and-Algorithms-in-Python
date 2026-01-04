@@ -160,7 +160,16 @@ class BinaryTree:
 
 
     def height_of_binary_tree(self, root):
-        pass
+        left_height = 0
+        right_height = 0
+
+        if root.left:
+            left_height = 1 + self.height_of_binary_tree(root.left)
+
+        if root.right:
+            right_height = 1 + self.height_of_binary_tree(root.right)
+
+        return max(left_height, right_height)
 
 if __name__ == '__main__':
     bt = BinaryTree() 
@@ -177,3 +186,6 @@ if __name__ == '__main__':
     bt.iterative_postorder_traversal(root2)
 
     bt.level_order_traversal(root1)
+    
+    bt.height_of_binary_tree(root1)
+    bt.height_of_binary_tree(root2)
