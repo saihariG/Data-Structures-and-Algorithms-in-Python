@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -137,8 +139,25 @@ class BinaryTree:
         while stack2:
             print(stack2.pop().data)
 
+    # Idea: Use a queue (FIFO)
+    # start with the root 
+    # Process nodes in the order they were inserted
     def level_order_traversal(self, root):
-        pass 
+        if root is None:
+            return
+        
+        queue = deque([root])
+
+        while queue:
+            temp_node = queue.popleft()
+            print(temp_node.data)
+
+            if temp_node.left:
+                queue.append(temp_node.left)
+
+            if temp_node.right:
+                queue.append(temp_node.right) 
+
 
     def height_of_binary_tree(self, root):
         pass
@@ -156,3 +175,5 @@ if __name__ == '__main__':
     bt.iterative_inorder_traversal(root2)
     bt.iterative_preorder_traversal(root2)
     bt.iterative_postorder_traversal(root2)
+
+    bt.level_order_traversal(root1)
