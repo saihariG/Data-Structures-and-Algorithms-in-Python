@@ -1,5 +1,14 @@
 from collections import deque
 
+# Properties:
+# Each node can have atmost 2 children
+
+# Types of Binary Tree:
+# 1. Full Binary Tree - Each node has either 0 or 2 children
+# 2. Complete Binary Tree - If all the levels are completely filled (except possibly the last level) and the last level has nodes as left as possible
+# 3. Perfect Binary Tree - All internal nodes have 2 children and all leaves are at same level
+# 4. Degenerate Binary Tree - All internal nodes have only a single child. It can be left-skewed or right-skewed
+
 class Node:
     def __init__(self, data):
         self.data = data
