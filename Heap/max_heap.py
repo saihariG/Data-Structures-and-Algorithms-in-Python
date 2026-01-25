@@ -10,6 +10,7 @@ Properties:
 
 1. In Max Heap, the root node will always be the largest element
 2. Nodes will be inserted through Leaf nodes
+3. Time Complexity to insert / Delete: O(log n)
 
 """
 
