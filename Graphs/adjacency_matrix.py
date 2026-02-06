@@ -7,30 +7,27 @@
 
 class UndirectedGraph:
 
-    def __init__(self):
-        self.adj = {}
-        self.edge = 0
+    def __init__(self, nodes):
+        self.adj_matrix = [[0] * nodes for _ in range(nodes)]
+        self.edges = 0 # no. of edges in graph
+        self.vertices = nodes # no. of vertices/nodes in the graph
     
     def add_edge(self, u, v):
-        if u not in self.adj:
-            self.adj[u] = []
-        if v not in self.adj:
-            self.adj[v] = []
+        self.adj_matrix[u][v] = 1
+        self.adj_matrix[v][u] = 1 # because it is an undirected graph
 
-        self.adj[u].append(v)
-        self.adj[v].append(u)
-
-        self.edge += 1
+        self.edges += 1
 
     def display(self):
-        print(len(self.adj), "Vertices")
-        print(self.edge, "Edges")
-        for node in self.adj:
-            print(node, "->", self.adj[node])
+        print(self.vertices, "Vertices")
+        print(self.edges, "Edges")
+        
+        for node in self.adj_matrix:
+            print(node)
 
 if __name__ == "__main__":
 
-    undirected_graph = UndirectedGraph()
+    undirected_graph = UndirectedGraph(4)
 
     undirected_graph.add_edge(0, 1)
     undirected_graph.add_edge(1, 2)
@@ -39,3 +36,15 @@ if __name__ == "__main__":
 
 
     undirected_graph.display()
+
+"""
+output:
+
+4 Vertices
+4 Edges
+[0, 1, 0, 1]
+[1, 0, 1, 0]
+[0, 1, 0, 1]
+[1, 0, 1, 0]
+
+"""
