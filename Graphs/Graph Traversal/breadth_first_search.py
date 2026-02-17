@@ -31,6 +31,8 @@ class BreadthFirstSearch:
             u = queue.popleft()
             print(u, end=" ")
 
+            # Visiting the neighbors of the popped node
+            # Adding them into the queue if not visited
             for neighbor in self.adj_list[u]:
                 if not visited[neighbor]:
                     queue.append(neighbor)
