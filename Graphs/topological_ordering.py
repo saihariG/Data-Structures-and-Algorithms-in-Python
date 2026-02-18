@@ -37,7 +37,7 @@ class TopologicalOrdering:
     #   - If any neighbor becomes 0, push to the queue
     # 
     # Time Complexity: O(V + E)
-    def topological_ordering(self):
+    def kahns_topological_ordering(self):
         queue = deque()
 
         for i in range(self.vertices):
