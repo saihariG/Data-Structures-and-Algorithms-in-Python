@@ -17,7 +17,7 @@ Properties:
 class MinHeap:
 
     def __init__(self):
-        self.heap = [None]
+        self.heap = [None] # dummy element for 1-based indexing
         self.n = 0
 
     def is_empty(self):
@@ -37,6 +37,46 @@ class MinHeap:
             self.heap[n], self.heap[n // 2] = self.heap[n // 2], self.heap[n]
             # continue shifting up
             n = n // 2
+
+    # Algorithm: 
+   # 1. To delete the root node, replace it with the last element
+   # 2. Heapify down and restore the heap property
+    def delete_min(self):
+        if self.n == 0:
+            return
+        
+        min = self.heap[1]
+        self.heap[1] = self.heap[n]
+        self.heap.pop()
+        self.n -= 1
+
+        # heapify down
+        self.sink()
+        return min
+    
+    # Left child: 2*i
+    # Right child: 2*i + 1
+    def sink(self):
+        i = 1 # parent
+
+        # while atleast one child exists
+        while 2*i <= self.n:
+
+            j = 2*i # Left child
+
+            # pick the smaller child
+            if j < self.n: 
+                if self.heap[j] > self.heap[j+1]:
+                    j += 1
+                
+            # if parent is already smaller, Stop
+            if self.heap[i] <= self.heap[j]:
+                break
+
+            # swap with the smaller child
+            self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
+            # move down
+            i = j 
 
     def print_min_heap(self):
         for i in range(1, self.n + 1):
